@@ -4,6 +4,8 @@ There's no simple built in way to see the currently installed versions of the "c
 
 This simple and straight-forward command-line tool shows all the available versions in your system.
 
+>**Note**: I've used .NET 2.0 for this tool, the minimum version I had access to, so that it can really work in any system, even the oldest ones, and being able to return all the versions available anyway.
+
 By default, it shows some informational text at the beginning, and stops the execution until you press any key:
 
 ![The results of running the program in my system](dotnetversions.png)
