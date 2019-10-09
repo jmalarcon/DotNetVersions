@@ -29,7 +29,7 @@ namespace DotNetVersions
             }
 
             if (!batchMode)
-                Console.ReadLine();
+                Console.ReadKey();
         }
 
         //Writes the version
@@ -114,13 +114,23 @@ namespace DotNetVersions
 
             using (RegistryKey ndpKey = Registry.LocalMachine.OpenSubKey(subkey))
             {
-                if (ndpKey != null && ndpKey.GetValue("Release") != null)
+                if (ndpKey == null)
+                    return;
+                //First check if there's an specific version indicated
+                if (ndpKey.GetValue("Version") != null)
                 {
-                    WriteVersion(
-                        CheckFor45PlusVersion(
-                                (int)ndpKey.GetValue("Release")
-                            )
-                    );
+                    WriteVersion(ndpKey.GetValue("Version").ToString());
+                }
+                else
+                {
+                    if (ndpKey != null && ndpKey.GetValue("Release") != null)
+                    {
+                        WriteVersion(
+                            CheckFor45PlusVersion(
+                                    (int)ndpKey.GetValue("Release")
+                                )
+                        );
+                    }
                 }
             }
 
