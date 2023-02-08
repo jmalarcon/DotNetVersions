@@ -137,7 +137,7 @@ namespace DotNetVersions
             // Checking the version using >= enables forward compatibility.
             string CheckFor45PlusVersion(int releaseKey)
             {
-                if (releaseKey >= 533325)
+                if (releaseKey >= 533320)
                     return "4.8.1";
                 if (releaseKey >= 528040)
                     return "4.8";
